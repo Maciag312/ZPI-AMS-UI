@@ -1,0 +1,12 @@
+.App {
+  padding: 40px;
+}
+
+.AppWrapper {
+  background-color: #90cdf4;
+  height: 100vh;
+}
+
+.App-header {
+  padding: 20px;
+}

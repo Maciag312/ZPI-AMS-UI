@@ -1,0 +1,48 @@
+.AuthorizationPageBox {
+  max-width: 500px;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.Center {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.AuthorizationServerLogo {
+  color: seagreen;
+  text-align: right;
+  margin-right: 10px;
+  padding-bottom: 5px;
+}
+
+.ClientLogo {
+  color: seagreen;
+  margin-bottom: 25px;
+}
+
+.AuthorizationPageBoxContent {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.AllowPageBox {
+  max-width: 300px;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.AllowPageBoxContent {
+  padding: 15%;
+}
+
+.AuthorizationPageHeading {
+  padding-top: 20px;
+  margin-bottom: 5px;
+}
