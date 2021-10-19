@@ -1,11 +1,11 @@
 {
-  "name": "zpi-ui",
+  "name": "zpi-ams-ui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@emotion/styled": "^11.3.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -15,7 +15,6 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-router-config": "^5.0.3",
     "axios": "^0.21.1",
-    "chakra-ui": "^0.3.9",
     "formik": "^2.2.9",
     "framer-motion": "^4",
     "react": "^17.0.2",
@@ -53,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.1",
     "husky": "^7.0.1",
     "jest": "^26.6.0",
     "lint-staged": "^11.1.2",
