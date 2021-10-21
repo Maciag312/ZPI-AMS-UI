@@ -11,8 +11,8 @@ class ManagerClientImpl implements ManagerClient {
     this.host = host;
   }
 
-  signIn(creds: Creds, organization: string): Promise<AxiosResponse<any>> {
-    return axios.post(URICreator.signInURI(this.host, organization), creds);
+  signIn(creds: Creds): Promise<AxiosResponse<any>> {
+    return axios.post(URICreator.signInURI(this.host), creds);
   }
 }
 

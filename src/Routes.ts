@@ -2,24 +2,22 @@ class Api {
   private API_ENDPOINT = "/api";
   private MANAGER_ENDPOINT = "/manager";
   private USERS_ENDPOINT = this.API_ENDPOINT + "/users";
-  private ORGANIZATION = (organization: string) =>
-    "/orgnization/" + organization;
+  private CLIENT_ENDPOINT = "/client"
 
   SIGN_IN = this.API_ENDPOINT + "/authenticate";
   SIGN_UP = this.USERS_ENDPOINT + "/signup";
-  CONSENT = this.API_ENDPOINT + "/consent";
 
-  MANAGER_SIGN_IN = (organization: string) =>
+  ADD_CLIENT = () => 
+      this.API_ENDPOINT +
+      this.CLIENT_ENDPOINT 
+  
+  MANAGER_SIGN_IN = () =>
     this.API_ENDPOINT +
-    this.ORGANIZATION(organization) +
     this.MANAGER_ENDPOINT +
     "/signin";
 }
 
-export const AUTH = "/allow";
-export const SIGN_IN = "/organization/:organization/signin";
-export const SIGN_UP = "/organization/:organization/signup";
-export const DASHBOARD = "/organization/:organization/dashboard";
+export const DASHBOARD = "/dashboard";
 export const DASHBOARD_SIGNIN = DASHBOARD + "/signin";
 
 export const API = new Api();
