@@ -46,6 +46,11 @@ class ClientClientImpl implements ClientClient {
 
         })
     }
+    
+    addURIToClient(id: string, uri: string): Promise<AxiosResponse<any>> {
+        let config = this.createTokenConfig()
+        return axios.post(URICreator.removeURIFromClient(id), {redirectURI: uri}, config)
+    }
 }
 
 export default new ClientClientImpl();

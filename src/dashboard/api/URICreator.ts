@@ -21,6 +21,10 @@ class URICreator {
   removeURIFromClient = (id: string) => {
     return this.host + API.REMOVE_URI_FROM_CLIENT(id)
   }
+  
+  addURIToClient = (id: string) => {
+    return this.host + API.REMOVE_URI_FROM_CLIENT(id)
+  }
 }
 
 export default new URICreator();

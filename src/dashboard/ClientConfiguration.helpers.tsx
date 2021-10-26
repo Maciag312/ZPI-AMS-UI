@@ -79,3 +79,12 @@ export const useRemoveURIFromClient = () => {
   return handleSubmit;
 
 }
+
+export const useURIAddition = () => {
+  const handleSubmit = (id: string, uri: string) => {
+    return clientClientInstance
+    .addURIToClient(id, uri)
+  };
+
+  return handleSubmit;
+}

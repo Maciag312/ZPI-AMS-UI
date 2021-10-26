@@ -20,7 +20,7 @@ import {
   } from "@chakra-ui/react"
 
 import "./style.css";
-import { useClientAddition, useFetchClients, useRemoveClient, useRemoveURIFromClient } from "./ClientConfiguration.helpers";
+import { useClientAddition, useFetchClients, useRemoveClient, useRemoveURIFromClient, useURIAddition } from "./ClientConfiguration.helpers";
 import { useState, useEffect } from "react";
 import Client from "../common/Client";
 import { useHistory } from "react-router";
@@ -39,8 +39,10 @@ export default function ClientConfiguration() {
     const fetchClients = useFetchClients()
     const removeClient = useRemoveClient()
     const removeUriFromClient = useRemoveURIFromClient()
+    const addURIToClient = useURIAddition()
 
     const [clients, setClients] = useState([] as Client[])
+    const [URIToAdd, setURIToAdd] = useState({id: "", uri: ""})
 
     
     useEffect(() => {
@@ -73,6 +75,17 @@ export default function ClientConfiguration() {
         setRedirectionURIs(event.currentTarget.value.split(", "))
     }
 
+    const handleURIInputChange = (event: React.FormEvent<HTMLInputElement>) => { 
+        setURIToAdd({id: event.currentTarget.id, uri: event.currentTarget.value})
+    }
+
+    const handleURIAddition = (event: React.FormEvent<HTMLButtonElement>) => { 
+        if(event.currentTarget.id === URIToAdd.id && URIToAdd.uri !== null) {
+            addURIToClient(URIToAdd.id, URIToAdd.uri)
+            window.location.reload()
+        }
+    }
+
     const submitClientDeletion = (event: React.MouseEvent<HTMLButtonElement>) => {
         let id = event.currentTarget.id;
         console.log("Remove client with id: " + id + " is actioned.")
@@ -101,8 +114,10 @@ export default function ClientConfiguration() {
                 </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-                {createTable(client)}
                 <Button id={client.id} size="sm" onClick={submitClientDeletion} colorScheme="red"> Remove </Button>
+                {createTable(client)}
+                <Input id={client.id} onChange={handleURIInputChange}  style={{maxWidth: "600px", margin: "15px auto 10px auto", backgroundColor: "white"}} placeholder = "add redirection uri"></Input>
+                <Button id={client.id} size="sm" onClick={handleURIAddition} colorScheme="green"> Add </Button>
             </AccordionPanel>
         </AccordionItem>
         )
@@ -110,17 +125,22 @@ export default function ClientConfiguration() {
 
     const createTable = (client: Client) => { 
         return (
-        <Table variant="simple">
-            <Thead>
-                <Tr>
-                    <Th>redirect uri</Th>
-                    <Th> </Th>
-                </Tr>
-            </Thead>
-            <Tbody>
-                {createRows(client)}
-            </Tbody>
-        </Table> )
+        <>
+        {client.availableRedirectUris.length > 0 ? 
+            <Table variant="simple">
+                <Thead>
+                    <Tr>
+                        <Th>redirect uri</Th>
+                        <Th> </Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {createRows(client)}
+                </Tbody>
+            </Table> 
+            : null
+        }
+        </> )
     }
 
    
@@ -159,7 +179,7 @@ export default function ClientConfiguration() {
                 <Input onChange={handleInputChange}  style={{maxWidth: "700px", margin: "15px auto 10px auto", backgroundColor: "white"}} placeholder = "client id"></Input>
                 <Textarea onChange={handleTextAreaChange} placeholder = "Please set redirection uris here:" style={{maxWidth: "700px", margin: "0px auto 10px auto", backgroundColor: "white"}}></Textarea>
                 <br></br>
-                <Button onClick={handleSubmit} style={{padding: "30px auto 10px auto"}} colorScheme="green">Add</Button>
+                <Button onClick={handleSubmit} style={{padding: "30px auto 10px auto", marginBottom: "10px"}} colorScheme="green">Add</Button>
                 {createAccodition(clients)}
             </Box>
         </Box>

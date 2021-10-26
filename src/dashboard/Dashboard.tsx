@@ -2,8 +2,9 @@ import RedirectToSignInWhenTokenNotAvailable from "../common/RedirectToSignInWhe
 
 
 import "./style.css";
-import NavigationBar from "../common/NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 import ClientConfiguration from "./ClientConfiguration";
+import SideBar from "../components/SideBar";
 
 
 
@@ -13,7 +14,7 @@ export default function Dashboard() {
    
     return (
     <div>
-        <NavigationBar></NavigationBar>
+        <NavigationBar/>
         <ClientConfiguration></ClientConfiguration>
     </div>
     )
