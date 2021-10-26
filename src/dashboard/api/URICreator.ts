@@ -1,12 +1,26 @@
 import { API } from "../../Routes";
+import { host } from "./AuthorizationServerConfig";
 
 class URICreator {
-  addClient(host: string): string {
-    return host + API.ADD_CLIENT
+  private host = host
+  addClient(): string {
+    return this.host + API.ADD_CLIENT()
   }
-  signInURI = (host: string) => {
-    return host + API.MANAGER_SIGN_IN();
+  signInURI = () => {
+    return this.host + API.MANAGER_SIGN_IN()
   };
+
+  fetchClientsURI = () => {
+    return this.host + API.FETCH_CLIENTS();
+  }
+
+  removeClient = (id: string) => {
+    return this.host + API.REMOVE_CLIENT(id);
+
+  }
+  removeURIFromClient = (id: string) => {
+    return this.host + API.REMOVE_URI_FROM_CLIENT(id)
+  }
 }
 
 export default new URICreator();

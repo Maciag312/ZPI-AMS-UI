@@ -1,4 +1,3 @@
-import React from "react";
 import SignInDashboard from "./dashboard/signin/SignInDashboard";
 import Dashboard from "./dashboard/Dashboard";
 
@@ -18,6 +17,9 @@ function App() {
               </Route>
               <Route path="/dashboard">
                 <Dashboard/>
+              </Route>
+              <Route path="/">
+                Hello
               </Route>
             </Switch>
           </Router>

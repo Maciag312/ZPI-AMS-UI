@@ -1,19 +1,51 @@
 import axios, { AxiosResponse } from "axios";
 import Client from "../../common/Client";
-import { host } from "./AuthorizationServerConfig";
 import { ClientClient } from "./ClientClient";
 import URICreator from "./URICreator";
+import Cookies from "universal-cookie";
 
 class ClientClientImpl implements ClientClient {
-  host: string;
+    
+    private createTokenConfig = () => {
+        const token = new Cookies().get("jwt_token")
+        return {
+            headers: {
+              Authorization: "Bearer " + token,
+            }
+        }
+    }
 
-  constructor(host: string) {
-    this.host = host;
-  }
+    add(client: Client): Promise<AxiosResponse<any>> {
+        const token = new Cookies().get("jwt_token")
+        let config = {
+            headers: {
+              Authorization: "Bearer " + token,
+            }
+        }
+          
+        return axios.post(URICreator.addClient(), client, config);
+    }
 
-  add(client: Client): Promise<AxiosResponse<any>> {
-    return axios.post(URICreator.addClient(this.host), client);
-  }
+    fetchClients(): Promise<AxiosResponse<any>> {
+        let config = this.createTokenConfig()
+        return axios.get(URICreator.fetchClientsURI(), config)
+    }
+
+    removeClient(id: string): Promise<AxiosResponse<any>> {
+        let config = this.createTokenConfig()
+        return axios.delete(URICreator.removeClient(id), config)
+    }
+
+    removeURIFromClient(id: string, uri: string): Promise<AxiosResponse<any>> {
+        const token = new Cookies().get("jwt_token")
+        return axios.delete(URICreator.removeURIFromClient(id), {
+            headers: {
+                Authorization: "Bearer " + token,
+              },
+            data: {redirectURI: uri}
+
+        })
+    }
 }
 
-export default new ClientClientImpl(host);
+export default new ClientClientImpl();

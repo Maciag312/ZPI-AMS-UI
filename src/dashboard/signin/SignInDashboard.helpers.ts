@@ -24,6 +24,8 @@ export const useSignIn = (orgnization: string) => {
       })
       .catch((error) => {
         console.log(error);
+        cookies.remove("jwt_token")
+        history.push("/dashboard/signin")
         showSigningInFailure();
       });
   };
