@@ -4,6 +4,7 @@
 
 .AppWrapper {
   background-color: #90cdf4;
+  overflow-y: hidden;
   height: 100vh;
 }
 

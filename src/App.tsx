@@ -4,6 +4,7 @@ import Dashboard from "./dashboard/Dashboard";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import { DASHBOARD_SIGNIN } from "./Routes";
+import Playground from "./Playground";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
                 <Dashboard/>
               </Route>
               <Route path="/">
-                Hello
+                {/* <Playground></Playground> */}
               </Route>
             </Switch>
           </Router>

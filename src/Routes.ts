@@ -35,6 +35,11 @@ class Api {
     this.API_ENDPOINT +
     this.CLIENT_ENDPOINT + 
     "/" + id + "/redirection_uris"
+
+  ADD_URI_TO_CLIENT = (id: string) =>
+    this.API_ENDPOINT +
+    this.CLIENT_ENDPOINT + 
+    "/" + id + "/redirection_uris"
 }
 
 export const DASHBOARD = "/dashboard";

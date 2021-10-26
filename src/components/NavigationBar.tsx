@@ -1,4 +1,4 @@
-import SignOutButton from "../common/SignOutButton"
+import SignOutButton from "./SignOutButton"
 
 import "./../dashboard/style.css";
 
