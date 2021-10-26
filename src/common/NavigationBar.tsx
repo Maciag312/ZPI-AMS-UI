@@ -9,7 +9,5 @@ export default function NavigationBar() {
             <div style={{float: "right", padding: "10px"}}>
                 <SignOutButton></SignOutButton>
             </div>
-        </div>
-        )
-
+        </div>)
 }

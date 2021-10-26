@@ -8,5 +8,5 @@ export default function RedirectToSignInWhenTokenNotAvailable() {
     const history = useHistory()
     if(JWTToken === undefined) {
         history.push("/dashboard/signin")
-    }
+    } 
 }
