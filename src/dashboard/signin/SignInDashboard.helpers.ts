@@ -17,7 +17,7 @@ export const useSignIn = (orgnization: string) => {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          cookies.set('jwt_token', res.data)
+          cookies.set('jwt_token', res.data, {sameSite: 'lax'})
           history.push("/dashboard")
           showSuccessfulLogin();
         }
