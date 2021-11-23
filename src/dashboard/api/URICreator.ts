@@ -86,6 +86,19 @@ class URICreator {
     return this.host + API.USERS() + "/info"
   }
 
+  renewPassword = () => {
+    return this.host + API.USERS() + "/password/renew"
+  }
+
+  activateUser = () => {
+    return this.host + API.USERS() + "/activate"
+  }
+
+  deactivateUser = () => {
+    return this.host + API.USERS() + "/deactivate"
+  }
+
+
 }
 
 export default new URICreator();

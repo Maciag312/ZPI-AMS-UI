@@ -58,6 +58,29 @@ export const useAssignRoleToUser = () => {
   return handleSubmit
 }
 
+export const useRenewPassword = () => {
+  const handleSubmit = (email: string) => {
+    return UserClient.renewPassword(email)
+  }
+  return handleSubmit
+}
+
+
+export const useActivateUser = () => {
+  const handleSubmit = (email: string) => {
+    return UserClient.activateUser(email)
+  }
+  return handleSubmit
+}
+
+export const useDeactivateUser = () => {
+  const handleSubmit = (email: string) => {
+    return UserClient.deactivateUser(email)
+  }
+  return handleSubmit
+}
+
+
 export const useRemoveRoleFromUser = () => {
   const handleSubmit = (email: string, role: string) => {
     return UserClient.removeRoleFromUser(email, role)

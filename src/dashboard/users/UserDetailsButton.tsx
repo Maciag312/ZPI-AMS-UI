@@ -32,7 +32,7 @@ export const UserDetailsButton: FC<IUserDetailsButton> = ({email} : IUserDetails
                 }
             ).catch(
                 err => {
-                    console.log(err)
+                    console.log(err) 
                 }
             )
 
