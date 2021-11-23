@@ -2,6 +2,8 @@ import { Button } from "@chakra-ui/button"
 import React from "react"
 import { useHistory } from "react-router-dom"
 import Cookies from "universal-cookie"
+import { isSecurityEnabled } from "../common/Security"
+import { BiLogOut } from "react-icons/bi";
 
 export default function SignOutButton() {
     const cookies = new Cookies()
@@ -11,12 +13,14 @@ export default function SignOutButton() {
     const signOut = () => {
         cookies.remove('jwt_token', { path: '/dashboard', domain: "localhost" });
         cookies.remove('jwt_token', { path: '/', domain: "localhost" });
-        history.push("/dashboard/signin")
+        if(isSecurityEnabled) {
+            history.push("/dashboard/signin")
+        }
     }
   
     if(JWTToken !== undefined) {
-        return <Button onClick={signOut} colorScheme="blue">Sign out</Button>
+        return <Button leftIcon={<BiLogOut/>} onClick={signOut} color="white" backgroundColor="#7EB6AB" >Sign out</Button>
     } else {
-        return <></>
+        return <Button leftIcon={<BiLogOut/>} onClick={signOut} color="white" backgroundColor="#7EB6AB" >Sign out</Button>
     }
 }

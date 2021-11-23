@@ -1,9 +1,10 @@
 import { useToast } from "@chakra-ui/react";
 import React from "react";
-import clientClientInstance from "./api/ClientClientImpl"
-import Client from "../common/Client";
+import clientClientInstance from "../api/ClientClientImpl"
+import Client from "../../common/Client";
 import Cookies from "universal-cookie";
 import { useHistory } from "react-router-dom"
+import { isSecurityEnabled } from "../../common/Security";
 
 
 export const useClientAddition = () => {
@@ -25,8 +26,10 @@ export const useClientAddition = () => {
       .catch((error) => {
         console.log(error);
         showClientAddingFailure();
-        cookies.remove("jwt_token")
-        history.push("/dashboard/signin")
+        cookies.remove("jwt_token") 
+        if(isSecurityEnabled) {
+          history.push("/dashboard/signin")
+        }
       });
   };
 
@@ -51,8 +54,12 @@ export const useClientAddition = () => {
 export const useFetchClients = () => {
   
     const handleSubmit = () => {
-      return clientClientInstance
-      .fetchClients()
+      if(isSecurityEnabled) {
+        return clientClientInstance.fetchClients()
+      } else {
+        return clientClientInstance.fetchClientsStubs();
+      }
+
     };
   
     return handleSubmit;
