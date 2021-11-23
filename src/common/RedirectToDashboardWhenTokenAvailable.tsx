@@ -1,6 +1,7 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
 import Cookies from "universal-cookie"
+import { CLIENTS } from "../Routes"
 
 export default function RedirectToDashboardWhenTokenAvailable() {
     const cookies = new Cookies()
@@ -8,6 +9,6 @@ export default function RedirectToDashboardWhenTokenAvailable() {
   
     const history = useHistory()
     if(JWTToken !== undefined) {
-        history.push("/dashboard")
+        history.push(CLIENTS)
     }
 }

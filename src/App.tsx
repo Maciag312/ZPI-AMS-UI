@@ -1,9 +1,15 @@
 import SignInDashboard from "./dashboard/signin/SignInDashboard";
-import Dashboard from "./dashboard/Dashboard";
 
 import { Box, ChakraProvider } from "@chakra-ui/react";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import { DASHBOARD_SIGNIN } from "./Routes";
+import { Switch, BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { CLIENTS, DASHBOARD_SIGNIN, ROLES, PERMISSONS, USERS } from "./Routes";
+import SideBar from "./components/SideBar";
+import NavigationBar from "./components/NavigationBar";
+import Permissions from "./dashboard/permissions/Permissions";
+import Clients from "./dashboard/clients/Clients"
+import Users from "./dashboard/users/Users";
+import Roles from "./dashboard/roles/Roles";
+
 
 function App() {
   return (
@@ -15,10 +21,28 @@ function App() {
               <Route path={DASHBOARD_SIGNIN}>
                 <SignInDashboard></SignInDashboard>
               </Route>
-              <Route path="/dashboard">
-                <Dashboard/>
+              <Route path={CLIENTS}>
+                <SideBar/>
+                <NavigationBar/>
+                <Clients/>
+              </Route>
+              <Route path={USERS}>
+                <SideBar/>
+                <NavigationBar/>
+                <Users></Users>
+              </Route>
+              <Route path={ROLES}>
+                <SideBar/>
+                <NavigationBar/>
+                <Roles/>
+              </Route>
+              <Route path={PERMISSONS}>
+                <SideBar/>
+                <NavigationBar/>
+                <Permissions></Permissions>
               </Route>
               <Route path="/">
+                <Redirect to={CLIENTS}/>;
               </Route>
             </Switch>
           </Router>

@@ -25,10 +25,6 @@
   padding-bottom: 5px;
 }
 
-.ClientLogo {
-  color: seagreen;
-  margin-bottom: 25px;
-}
 
 .AuthorizationPageBoxContent {
   margin-left: 15%;
@@ -63,4 +59,10 @@
 
 .ClientConfigurationWrapper {
   padding-top: 40px
+}
+
+.HRLine {
+  display: block;
+  border-top: 1px solid #E8E8E8;
+  padding: 0;
 }

@@ -11,7 +11,7 @@ import {
 import { Heading } from "@chakra-ui/react";
 import React, { } from "react";
 import { useParams } from "react-router-dom";
-import "./../style.css";
+import "./../../common/style.css"
 import { useSignIn } from "./SignInDashboard.helpers";
 import RedirectToDashboardWhenTokenAvailable from "../../common/RedirectToDashboardWhenTokenAvailable"
 export default function SignInDashboard(props: any) {
@@ -41,60 +41,59 @@ export default function SignInDashboard(props: any) {
   };
 
   return (
-    <Box className="AuthorizationWrapper">
-      <Box className="AuthorizationPageBox" rounded="lg" onKeyDown={hadleEnterSubmit}>
-        <Box className="AuthorizationPageBoxContent">
-          <Heading as="h3" size="lg" className="AuthorizationPageHeading">
-            Sign in
-          </Heading>
-          <Text fontSize="2xl" className="ClientLogo">
-            {organization} dashboard
-          </Text>
-          <FormControl isRequired mt={6}>
-            <FormLabel textAlign="left" mb="8px">
-              {" "}
-              Username or email
-            </FormLabel>
-            <Input
-              className="Center"
-              pr="4.5rem"
-              bgColor="white"
-              onChange={(event) => setLogin(event.currentTarget.value)}
-            />
-          </FormControl>
-
-          <FormControl isRequired mt={6}>
-            <FormLabel textAlign="left" mb="8px">
-              {" "}
-              Password
-            </FormLabel>
-            <InputGroup className="Center" size="md">
+    <Box height="100vh" width="100%" backgroundColor="#99DACE">
+      <Box className="AuthorizationWrapper">
+        <Box className="AuthorizationPageBox" rounded="lg" onKeyDown={hadleEnterSubmit}>
+          <Box className="AuthorizationPageBoxContent">
+            <Heading as="h3" size="lg" className="AuthorizationPageHeading">
+              Sign in to
+            </Heading>
+            <Text fontWeight="bold" fontSize="2xl" color="#7EB6AB">
+               dashboard
+            </Text>
+            <FormControl isRequired mt={6}>
+              <FormLabel textAlign="left" mb="8px">
+                {" "}
+                Username or email
+              </FormLabel>
               <Input
+                className="Center"
                 pr="4.5rem"
-                type={show ? "text" : "password"}
                 bgColor="white"
-                onChange={(event) => setPassword(event.currentTarget.value)}
+                onChange={(event) => setLogin(event.currentTarget.value)}
               />
+            </FormControl>
 
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleShowPassword}>
-                  {show ? "Hide" : "Show"}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
-          <Button
-            onClick={handleSubmit}
-            colorScheme="green"
-            marginTop="20px"
-            size="sm"
-          >
-            Sign in
-          </Button>
+            <FormControl isRequired mt={6}>
+              <FormLabel textAlign="left" mb="8px">
+                {" "}
+                Password
+              </FormLabel>
+              <InputGroup className="Center" size="md">
+                <Input
+                  pr="4.5rem"
+                  type={show ? "text" : "password"}
+                  bgColor="white"
+                  onChange={(event) => setPassword(event.currentTarget.value)}
+                />
+
+                <InputRightElement width="4.5rem">
+                  <Button h="1.75rem" size="sm" onClick={handleShowPassword}>
+                    {show ? "Hide" : "Show"}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Button
+              onClick={handleSubmit}
+              colorScheme="blue"
+              margin="20px"
+              size="sm"
+            >
+              Sign in
+            </Button>
+          </Box>
         </Box>
-        <Text fontSize="1xl" className="AuthorizationServerLogo">
-          Auth Server Logo
-        </Text>
       </Box>
     </Box>
   );

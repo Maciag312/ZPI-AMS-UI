@@ -31,6 +31,13 @@ class ClientClientImpl implements ClientClient {
         return axios.get(URICreator.fetchClientsURI(), config)
     }
 
+    fetchClientsStubs(): Promise<any> {
+       return Promise.resolve({
+           data: [{id: 'blog-client', availableRedirectUris: ["https://blogclient.com"]}],
+           status: 200
+        })
+    }
+
     removeClient(id: string): Promise<AxiosResponse<any>> {
         let config = this.createTokenConfig()
         return axios.delete(URICreator.removeClient(id), config)

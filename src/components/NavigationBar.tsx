@@ -1,13 +1,17 @@
 import SignOutButton from "./SignOutButton"
 
-import "./../dashboard/style.css";
+import "./../common/style.css";
+import { Box } from "@chakra-ui/react";
 
 export default function NavigationBar() {
    
     return (
-        <div style={{width: "100%", backgroundColor: "#F1F1F1", height: "60px"}}>
-            <div style={{float: "right", padding: "10px"}}>
+        <Box>
+        <Box style={{width: "100%", backgroundColor: "#FEFCFC", height: "90px"}}>
+            <Box float="right" padding="22px">
                 <SignOutButton></SignOutButton>
-            </div>
-        </div>)
+            </Box>
+        </Box>
+            <hr style={{borderTopWidth: "2px", borderColor: "#E8E8E8"}}></hr>
+        </Box>)
 }
