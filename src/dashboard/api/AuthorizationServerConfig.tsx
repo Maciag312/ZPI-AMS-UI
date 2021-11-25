@@ -1,1 +1,1 @@
-export const host = process.env.REACT_APP_HOST || "http://localhost:10000";
+export const host = window.location.origin;
