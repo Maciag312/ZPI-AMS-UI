@@ -1,6 +1,5 @@
 class Api {
   
-  
   private API_ENDPOINT = "/api";
   private MANAGER_ENDPOINT = "/manager";
   private USERS_ENDPOINT = this.API_ENDPOINT + "/users";
@@ -54,6 +53,9 @@ class Api {
   ROLES = () => 
     this.API_ENDPOINT +
     this.ROLE_ENDPOINT
+
+  GROUPS = () => 
+    this.API_ENDPOINT + "/groups"
 }
 
 export const DASHBOARD = "/dashboard";
@@ -63,5 +65,6 @@ export const PERMISSONS = DASHBOARD + "/permissions"
 export const ROLES = DASHBOARD + "/roles"
 export const CLIENTS = DASHBOARD + "/clients"
 export const USERS = DASHBOARD + "/users"
+export const GROUPS = DASHBOARD + "/groups"
 
 export const API = new Api();

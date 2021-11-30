@@ -2,13 +2,14 @@ import SignInDashboard from "./dashboard/signin/SignInDashboard";
 
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { Switch, BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { CLIENTS, DASHBOARD_SIGNIN, ROLES, PERMISSONS, USERS } from "./Routes";
+import { CLIENTS, DASHBOARD_SIGNIN, ROLES, PERMISSONS, USERS, GROUPS } from "./Routes";
 import SideBar from "./components/SideBar";
 import NavigationBar from "./components/NavigationBar";
 import Permissions from "./dashboard/permissions/Permissions";
 import Clients from "./dashboard/clients/Clients"
 import Users from "./dashboard/users/Users";
 import Roles from "./dashboard/roles/Roles";
+import Groups from "./dashboard/groups/Groups";
 
 
 function App() {
@@ -35,6 +36,11 @@ function App() {
                 <SideBar/>
                 <NavigationBar/>
                 <Roles/>
+              </Route>
+              <Route path={GROUPS}>
+                <SideBar/>
+                <NavigationBar/>
+                <Groups/>
               </Route>
               <Route path={PERMISSONS}>
                 <SideBar/>

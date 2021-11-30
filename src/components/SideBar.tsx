@@ -1,8 +1,10 @@
+
+import SignOutButton from "./SignOutButton"
 import { Box, Center, Text, VStack } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import "../common/style.css"
-import { CLIENTS, ROLES, PERMISSONS, USERS } from "../Routes"
-import {BiIdCard, BiUser, BiLockAlt, BiSitemap } from "react-icons/bi";
+import { CLIENTS, ROLES, PERMISSONS, USERS, GROUPS } from "../Routes"
+import {BiIdCard, BiUser, BiLockAlt, BiSitemap, BiGroup } from "react-icons/bi";
 import { useEffect, useState } from "react";
 
 export default function SideBar() {
@@ -64,6 +66,14 @@ export default function SideBar() {
                             <BiIdCard/>
                         </Box>
                          <Text marginLeft="10px" fontWeight="bold">Roles</Text>
+                    </Link>
+                 </Box>
+                 <Box w="90%" p={2} rounded="md" color={isSelected(GROUPS)?"#7EB6AB":"#C5C5C5"} backgroundColor={isSelected(GROUPS)?"#EAF5F3":"none"} _hover={{color: '#7EB6AB'}}>
+                    <Link to={GROUPS}>
+                        <Box marginTop="4px" marginRight="6px" marginLeft="6px" float="left">
+                            <BiGroup/>
+                        </Box>
+                         <Text marginLeft="10px" fontWeight="bold">Groups</Text>
                     </Link>
                  </Box>
             </VStack>

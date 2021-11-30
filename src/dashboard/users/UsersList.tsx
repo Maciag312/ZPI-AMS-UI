@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react"
 
 import "./../../common/style.css";
-import { useRemoveUser } from "./Users.helpers";
+import { useActivateUser, useDeactivateUser, useRemoveUser, useRenewPassword } from "./Users.helpers";
 import { FC } from "react";
 import Cookies from "universal-cookie";
 import { useHistory } from "react-router-dom";
@@ -31,9 +31,54 @@ export const UsersList: FC<IUsers> = ({users} : IUsers) => {
     const history = useHistory()
 
     const removeUser = useRemoveUser()
+    const renewPassword = useRenewPassword()
+    const activateUser = useActivateUser()
+    const deactivateUser = useDeactivateUser()
 
     const handleRemoveUser = (event: React.MouseEvent<HTMLButtonElement>) => {
-        removeUser(event.currentTarget.id)
+        removeUser(event.currentTarget.value)
+        .catch((error)=> {
+            console.log(error);
+            cookies.remove("jwt_token")
+            if(isSecurityEnabled) {
+                history.push("/dashboard/signin")
+            }
+        })
+        .finally(() => {
+            window.location.reload()
+        })
+    }
+
+    const handleRenewPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        renewPassword(event.currentTarget.value)
+        .catch((error)=> {
+            console.log(error);
+            cookies.remove("jwt_token")
+            if(isSecurityEnabled) {
+                history.push("/dashboard/signin")
+            }
+        })
+        .finally(() => {
+            window.location.reload()
+        })
+    }
+
+    const handleActivateUser = (event: React.MouseEvent<HTMLButtonElement>) => {
+        activateUser(event.currentTarget.value)
+        .catch((error)=> {
+            console.log(error);
+            cookies.remove("jwt_token")
+            if(isSecurityEnabled) {
+                history.push("/dashboard/signin")
+            }
+        })
+        .finally(() => {
+            window.location.reload()
+        })
+    }
+
+    const handleDeactivateUser = (event: React.MouseEvent<HTMLButtonElement>) => {
+        deactivateUser(event.currentTarget.value)
         .catch((error)=> {
             console.log(error);
             cookies.remove("jwt_token")
@@ -77,7 +122,7 @@ export const UsersList: FC<IUsers> = ({users} : IUsers) => {
             <Tr>
                 <Td>{usr.username}</Td>
                 <Td>{usr.email}</Td>
-                <Td>{isActiveBox(usr.isActive)}</Td>
+                <Td>{isActiveBox(usr.active)}</Td>
                 <Td>
                     <Box float="right">
                         <UserDetailsButton email={usr.email}></UserDetailsButton>
@@ -106,7 +151,7 @@ export const UsersList: FC<IUsers> = ({users} : IUsers) => {
                     variant="outline"
                 />
                 <MenuList minW="0" maxW="210px">
-                    <MenuItem id={usr.username} color="red" onClick={handleRemoveUser} icon={<AiOutlineDelete />} >
+                    <MenuItem value={usr.email} color="red" onClick={handleRemoveUser} icon={<AiOutlineDelete />} >
                         Remove
                     </MenuItem>
                     <UserRoles userEmail={usr.email} ></UserRoles>
@@ -119,6 +164,8 @@ export const UsersList: FC<IUsers> = ({users} : IUsers) => {
 
     const createRenewPasswordItem = (user: User) => {
         return (<MenuItem
+            value={user.email}
+            onClick={handleRenewPassword}
             icon={<BiRefresh/>}>
                 Renew password
         </MenuItem>)
@@ -126,8 +173,10 @@ export const UsersList: FC<IUsers> = ({users} : IUsers) => {
 
     const createToggleActivateItem = (user: User) => {
         return (<MenuItem
+            value={user.email}
+            onClick={user.active===true?handleDeactivateUser:handleActivateUser}
             icon={<AiOutlineUserSwitch/>}>
-           {user.isActive===true?"Deactiavte":"Actiavte"}
+           {user.active===true?"Deactivte":"Activate"}
         </MenuItem>)
     }
 
