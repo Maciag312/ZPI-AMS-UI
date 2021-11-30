@@ -33,6 +33,34 @@ export const useAddUser = () => {
   return handleSubmit;
 }
 
+
+export const useActivateUser = () => {
+
+  const handleSubmit = (email: string) => {
+    return UserClient.activateUser(email)
+  };
+
+  return handleSubmit;
+}
+
+export const useDeactivateUser = () => {
+
+  const handleSubmit = (email: string) => {
+    return UserClient.deactivateUser(email)
+  };
+
+  return handleSubmit;
+}
+
+export const useRenewPassword = () => {
+
+  const handleSubmit = (email: string) => {
+    return UserClient.renewPassword(email)
+  };
+
+  return handleSubmit;
+}
+
 export const usePutUserAttributes  = () => {
   const handleSubmit = (email: string, attributes: any) => {
     return UserClient.putUserAttributes(email, attributes)

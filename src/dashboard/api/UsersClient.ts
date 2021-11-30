@@ -94,6 +94,21 @@ class UsersClient  {
         return axios.post(URICreator.fetchUserInfo(), {email: email} ,config) 
     }
 
+    renewPassword(email: string) {
+      let config = this.createTokenConfig()
+      return axios.post(URICreator.renewPassword(), {email: email} ,config) 
+    }
+
+    activateUser(email: string) {
+      let config = this.createTokenConfig()
+      return axios.post(URICreator.activateUser(), {email: email} ,config) 
+    }
+
+    deactivateUser(email: string) {
+      let config = this.createTokenConfig()
+      return axios.post(URICreator.deactivateUser(), {email: email} ,config) 
+    }
+
     fetchUserInfoStub(email: string) {
         return Promise.resolve({
             data : 

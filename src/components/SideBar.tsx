@@ -1,5 +1,3 @@
-
-import SignOutButton from "./SignOutButton"
 import { Box, Center, Text, VStack } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import "../common/style.css"
@@ -19,7 +17,6 @@ export default function SideBar() {
         }
         window.addEventListener('resize', handleResize)
     }, [width])
-
 
     return (
         <Box style={{width: "250px", borderRight: "2px solid #E8E8E8", backgroundColor: "#FEFCFC", height: "100vh", position: "fixed"}}>
