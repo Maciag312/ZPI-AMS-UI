@@ -29,11 +29,6 @@ class URICreator {
   addURIToClient = (id: string) => {
     return this.host + API.REMOVE_URI_FROM_CLIENT(id)
   }
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> ZPI-add-groups-ams
 
   fetchPermissions = () => {
     return this.host + API.PERMISSIONS()
@@ -91,8 +86,6 @@ class URICreator {
     return this.host + API.USERS() + "/info"
   }
 
-<<<<<<< HEAD
-=======
   renewPassword = () => {
     return this.host + API.USERS() + "/password/renew"
   }
@@ -115,20 +108,17 @@ class URICreator {
   }
 
   addPermissionToGroup = (group: string) => {
-    return this.host + API.GROUPS() + "/" + group
+    return this.host + API.GROUPS() + "/" + group + "/assign-permission"
   }
 
   removePermissionFromGroup = (group: string) => {
-    return this.host + API.GROUPS() + "/" + group
+    return this.host + API.GROUPS() + "/" + group + "/remove-permission"
 
   }
 
   removeGroup = (group: string) => {
     return this.host + API.GROUPS() + "/" + group
   }
-
->>>>>>> Stashed changes
->>>>>>> ZPI-add-groups-ams
 }
 
 export default new URICreator();

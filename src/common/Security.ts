@@ -1,1 +1,1 @@
-export const isSecurityEnabled = false;  
+export const isSecurityEnabled = true;  
