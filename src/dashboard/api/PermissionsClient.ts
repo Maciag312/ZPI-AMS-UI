@@ -9,7 +9,16 @@ class PermissionsClient  {
             data : [
               {permission: "blog:edit"},
               {permission: "blog:write"},
+<<<<<<< HEAD
               {permission: "blog:modify"}
+=======
+              {permission: "blog:modify"},
+              {permission: "hr:fire"},
+              {permission: "hr:hire"},
+              {permission: "code:write"},
+              {permission: "code:edit"},
+
+>>>>>>> ZPI-add-groups-ams
             ], 
             status: 200
           })
