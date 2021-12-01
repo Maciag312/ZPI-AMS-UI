@@ -119,6 +119,10 @@ class URICreator {
   removeGroup = (group: string) => {
     return this.host + API.GROUPS() + "/" + group
   }
+
+  putRule = (group: string) => {
+    return this.host + API.GROUPS() + "/" + group + "/rule"
+  }
 }
 
 export default new URICreator();
