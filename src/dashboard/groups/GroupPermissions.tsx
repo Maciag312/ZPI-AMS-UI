@@ -87,8 +87,8 @@ export const GroupPermissions: FC<GroupPermissionsI> = ({groups, availablePermis
 
     return (
     <Box>
-        <Text marginTop="10px" fontSize="4xl" fontWeight="semibold" >List</Text>
-        <Text marginTop="10px" fontSize="lg" color="#C7C7C7" fontWeight="semibold" >Register or remove groups</Text>
+        <Text marginTop="10px" fontSize="4xl" fontWeight="semibold" >Permissions</Text>
+        <Text marginTop="10px" fontSize="lg" color="#C7C7C7" fontWeight="semibold" >Assign or remove permissions</Text>
         <Box marginTop="20px" rounded="lg" width="100%" backgroundColor="#FEFCFC">
         <Text padding="20px 20px 0px 20px"  color="#C7C7C7" fontWeight="semibold" >Groups list</Text>
         <Box padding="20px">

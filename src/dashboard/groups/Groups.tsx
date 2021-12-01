@@ -9,6 +9,7 @@ import { useFetchPermissions } from "../permissions/Permissions.helpers";
 import { GroupPermissions } from "./GroupPermissions";
 import { useFetchGroups } from "./Groups.helpers";
 import { GroupsList } from "./GroupsList";
+import { Rule } from "./rule/Rule";
 
 export default function Groups() {
 
@@ -59,6 +60,7 @@ export default function Groups() {
                 <TabList>
                     <Tab _selected={{color: "#7EB6AB", borderBottomColor: "#7EB6AB"}}>List</Tab>
                     <Tab _selected={{color: "#7EB6AB", borderBottomColor: "#7EB6AB"}}>Permissions</Tab>
+                    <Tab _selected={{color: "#7EB6AB", borderBottomColor: "#7EB6AB"}}>Rule Matchers</Tab>
                 </TabList>
                 <Center>
                     <TabPanels maxWidth="75%">
@@ -67,6 +69,9 @@ export default function Groups() {
                         </TabPanel>
                         <TabPanel>
                             <GroupPermissions availablePermissions={availablePermissions} groups={groups}/>
+                        </TabPanel>
+                        <TabPanel>
+                            <Rule groups={groups}/>
                         </TabPanel>
                     
                     </TabPanels>
