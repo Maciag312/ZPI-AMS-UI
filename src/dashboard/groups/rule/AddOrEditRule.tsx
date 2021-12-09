@@ -33,7 +33,7 @@ export const AddOrEditRule: FC<IAddOrEditRule> = ({groupName, rule} : IAddOrEdit
 
     const handleSubmit = () => { 
         putRule({name: rulename, matchers: matchers}, groupName).finally(() =>
-            {} //window.location.reload()
+            window.location.reload()
         )
     }
 
